@@ -6,11 +6,14 @@ import Service from "./pages/Service";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Navbar from "./components/Navbar";
+import Error from "./pages/Error";
+import Footer from "./components/Footer/Footer";
 
 const App = ()=>{
   return<>
  
   <BrowserRouter>
+  {/* <Footer/> */}
   <Navbar/>
   <Routes>
     <Route path="/" element={<Home/>} />
@@ -19,7 +22,9 @@ const App = ()=>{
     <Route path="/service" element={<Service/>} />
     <Route path="/register" element={<Register/>} />
     <Route path="/login" element={<Login/>} />
+    <Route path="*" element={<Error/>}/>
   </Routes>
+  <Footer/>
   </BrowserRouter>
   </>
 }

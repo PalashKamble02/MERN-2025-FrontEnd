@@ -1,4 +1,6 @@
 import React from "react";
+import Analytics from "../components/Analytics";
+import { NavLink } from "react-router-dom";
 
   const Home = () => {
 
@@ -17,8 +19,8 @@ import React from "react";
                          aperiam molestias, pariatur id? 
                     </p>
                     <div className="btn btn-group">
-                        <a href="/contact"><button className="btn"> connect now</button></a>
-                        <a href="/services" ><button className=" btn secondary-btn">learn more</button></a>
+                        <NavLink to="/contact"><button className="btn"> connect now</button></NavLink>
+                        <NavLink to="/services" ><button className=" btn secondary-btn">learn more</button></NavLink>
                     </div>
                 </div>
                 {/* hero images */}
@@ -29,27 +31,7 @@ import React from "react";
             </section>
         </main>
 
-        <section className="section-analytics">
-            <div className="container grid grid-four-cols">
-                <div className="div1">
-                    <h2>50+</h2>
-                    <p>registered companied</p>
-                </div>
-                <div className="div1">
-                    <h2>100,00+</h2>
-                    <p>Happy clients</p>
-                </div>
-                <div className="div1">
-                    <h2>500+</h2>
-                    <p>Well Known Developers</p>
-                </div>
-                <div className="div1">
-                    <h2>24/7</h2>
-                    <p>services</p>
-                </div>
-
-            </div>
-        </section>
+       <Analytics/>
         <section className="section-hero">
              <div className="container grid grid-two-cols">
                   {/* hero images */}

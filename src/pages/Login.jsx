@@ -32,7 +32,7 @@ const Login = () => {
                       <img src='/images/login.png' alt='login image' width="570" height="500"/>
                     </div>
                     <div className="registraion-form">
-                        <h1 className='main-heading mb3'>registration from</h1>
+                        <h1 className='main-heading mb3'>login from</h1>
                         <br />
                         <form onClick={handleSubmit}>
                            
