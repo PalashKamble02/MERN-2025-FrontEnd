@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../store/auth';
+
 
 const URL = 'http://localhost:3000/api/auth/register';
 
@@ -13,6 +15,7 @@ const Register = () => {
 
 
     const navigate = useNavigate();
+    const {storeTokenInLS} = useAuth();
 
 
 
@@ -42,6 +45,9 @@ const Register = () => {
             body:JSON.stringify(user),
         });
         if(response.ok){
+            const res_data = await response.json();
+            storeTokenInLS(res_data.token);
+            // localStorage.setItem("token", res_data.token);
             setUser({username:"", email:"", phone:"", password:""});
            navigate("/login")
         };
