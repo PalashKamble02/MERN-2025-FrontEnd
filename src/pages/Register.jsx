@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-
+const URL = 'http://localhost:3000/api/auth/register';
 
 const Register = () => {
     const [user, setUser] = useState({
@@ -15,7 +15,7 @@ const Register = () => {
     const navigate = useNavigate();
 
 
-    
+
     const handleInput = (e) =>{
         console.log(e);
         let name = e.target.name;
@@ -34,7 +34,7 @@ const Register = () => {
         try {
             
        
-        const response = await fetch('http://localhost:3000/api/auth/register',{
+        const response = await fetch(URL,{
             method:"POST",
             headers:{
                 "Content-Type":"application/json",

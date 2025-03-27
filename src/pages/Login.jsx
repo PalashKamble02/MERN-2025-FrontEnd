@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
+
+const URL = 'http://localhost:3000/api/auth/login';
 const Login = () => {
 
     const [user, setUser] = useState({
         email:"",
         password:"",
     });
+
+    const navigate = useNavigate();
 
     const handleInput = (e)=>{
         let name = e.target.name;
@@ -18,9 +23,32 @@ const Login = () => {
 
     };
 
-    const handleSubmit  = (e)=>{
+    const handleSubmit  = async (e)=>{
         e.preventDefault();
-        console.log(user);
+        try {
+            const response = await fetch(URL,{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify(user),
+            });
+            console.log("Login Form", response);
+
+            if(response.ok){
+                alert("Login Successful")
+                setUser({email:"", password:""});
+                navigate("/");
+            } else{
+                alert("Invalid Credentials")
+                console.log("inavlid credentials");
+                
+            }
+            
+        } catch (error) {
+            console.log("login", error);
+            
+        }
     };
   return (
    <>
@@ -46,7 +74,7 @@ const Login = () => {
                                 <input type="password" name='password' placeholder='password' id='password'  required autoComplete='off' value={user.password} onChange={handleInput}/>
                             </div>
                             <br />
-                            <button type='submit' className='btn btn-submit'>Register Now</button>
+                            <button type='submit' className='btn btn-submit'>Login Now</button>
                         </form>
                     </div>
                 </div>
